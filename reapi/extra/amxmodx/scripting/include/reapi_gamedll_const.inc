@@ -395,7 +395,7 @@ enum GamedllFunc
 
 	/*
 	* Description:      -
-	* Params:           (int cGibs, int human)
+	* Params:           (pevVictim, cGibs, human)
 	*/
 	RG_SpawnRandomGibs,
 };
@@ -777,13 +777,13 @@ enum GamedllFunc_CBasePlayer
 	* Params:           (const this)
 	*/
 	RG_CBasePlayer_UseEmpty,
-	
+
 	/*
 	* Description:      Called when a idle player is removed from server.
 	* Return type:      void
 	* Params:           (const this, const reason[])
 	*/
-	RG_CBasePlayer_DropIdlePlayer,	
+	RG_CBasePlayer_DropIdlePlayer,
 };
 
 /**
@@ -842,6 +842,34 @@ enum GamedllFunc_CGib
 	* Params:           (const this)
 	*/
 	RG_CGib_WaitTillLand,
+};
+
+/**
+* GamedllFunc CBaseEntity
+*/
+enum GamedllFunc_CBaseEntity
+{
+	/*
+	* Description:      -
+	* Return type:      void
+	* Params:           (pEntity, cShots, Float:vecSrc[3], Float:vecDirShooting[3], Float:vecSpread[3], Float:flDistance, iBulletType, iTracerFreq, iDamage, pevAttacker)
+
+	*/
+	RG_CBaseEntity_FireBullets = BEGIN_FUNC_REGION(cbaseentity),
+
+	/*
+	* Description:      -
+	* Return type:      void
+	* Params:           (pEntity, cShots, Float:vecSrc[3], Float:vecDirShooting[3], Float:vecSpread[3], Float:flDistance, iTracerFreq, iDamage, pevAttacker)
+	*/
+	RG_CBaseEntity_FireBuckshots,
+
+	/*
+	* Description:      -
+	* Return type:      Vector [3]
+	* Params:           (pEntity, Float:vecSrc[3], Float:vecDirShooting[3], Float:vecSpread, Float:flDistance, iPenetration, iBulletType, iDamage, Float:flRangeModifier, pevAttacker, bool:bPistol, shared_rand)
+	*/
+	RG_CBaseEntity_FireBullets3,
 };
 
 /**
@@ -4522,7 +4550,7 @@ enum CCSPlayer_Members
 	* Set params:       set_member(index, member, Float:value);
 	*/
 	m_flSpawnProtectionEndTime,
-	
+
 	/*
 	* Description:      -
 	* Member type:      class Vector
@@ -5996,7 +6024,7 @@ enum CGib_Members
 	* Set params:       set_member(index, member, value);
 	*/
 	m_Gib_bloodColor = BEGIN_MEMBER_REGION(gib),
-	
+
 	/*
 	* Description:      -
 	* Member type:      int
@@ -6004,7 +6032,7 @@ enum CGib_Members
 	* Set params:       set_member(index, member, value);
 	*/
 	m_Gib_cBloodDecals,
-	
+
 	/*
 	* Description:      -
 	* Member type:      int
@@ -6012,7 +6040,7 @@ enum CGib_Members
 	* Set params:       set_member(index, member, value);
 	*/
 	m_Gib_material,
-	
+
 	/*
 	* Description:      -
 	* Member type:      float
